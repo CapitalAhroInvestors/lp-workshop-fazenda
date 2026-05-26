@@ -134,14 +134,23 @@ export default function PlanCard({
             <p className="mb-3 font-sans text-sm font-medium uppercase tracking-widest text-[var(--text-muted)]">
               {name}
             </p>
+
+            {/* Ancoragem de valor */}
+            <p className="mb-1 font-sans text-sm font-semibold text-red-500">
+              ⚠ Lote 2 em breve por R$ {nextLotPrice}
+            </p>
+
             <div className="flex items-baseline gap-2">
               <span className="font-sans text-sm text-[var(--text-muted)]">R$</span>
               <span className="font-serif text-5xl font-medium text-[var(--text-primary)]">{price}</span>
               <span className="font-sans text-sm text-[var(--text-muted)]">à vista</span>
             </div>
-            <p className="mt-1 font-sans text-xs text-[var(--text-muted)]">
-              Lote 2 (em breve): <span className="line-through">R$ {nextLotPrice}</span>
-            </p>
+
+            {highlight && (
+              <p className="mt-1 font-sans text-xs text-[var(--text-muted)]">
+                ou <span className="font-semibold text-[var(--text-secondary)]">12x de R$ 6,89</span>
+              </p>
+            )}
           </div>
 
           {/* Features */}

@@ -31,6 +31,7 @@ export const PLANS = {
     featuresHeader: 'Tudo do plano Workshop +',
     features: [
       'Apostila Mapa dos 5 Sistemas (PDF 40 páginas)',
+      'Aula gravada + acesso à plataforma de cursos',
       'Grupo VIP de WhatsApp',
       'Q&A ao vivo com Dr. Renato',
       'Certificado de participação',
