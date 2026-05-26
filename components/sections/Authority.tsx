@@ -7,7 +7,7 @@ import Eyebrow from '@/components/ui/Eyebrow'
 import AnimateIn, { containerVariants, itemVariants } from '@/components/ui/AnimateIn'
 
 const BIO_PARAGRAPHS = [
-  'Renato Rodrigues é Diretor de Negócios Nacionais e Internacionais da Capital Agro Investors. Biólogo, mestre e doutor em Geoquímica Ambiental, possui mais de 20 anos de experiência em sustentabilidade, gestão agroambiental, estratégia e inovação no agronegócio.',
+  'Renato Rodrigues é Diretor de Negócios Nacionais e Internacionais da Capital Agro Investors. Doutor em Geoquímica Ambiental, possui mais de 20 anos de experiência em sustentabilidade, gestão agroambiental, estratégia e inovação no agronegócio.',
   'Foi pesquisador e executivo da Embrapa por 12 anos, coautor do Plano ABC (Agricultura de Baixo Carbono) e membro do IPCC. Atualmente, é professor da Fundação Dom Cabral, integrante do painel de especialistas da UNFCCC, palestrante e executivo com atuação em mudança do clima, gestão estratégica, inovação e sustentabilidade aplicada ao agro.',
 ]
 
