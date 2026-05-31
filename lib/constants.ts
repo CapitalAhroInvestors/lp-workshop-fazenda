@@ -10,7 +10,7 @@ export const PLANS = {
     name: 'Workshop',
     price: 47,
     nextLotPrice: 67,
-    checkoutUrl: 'https://payfast.greenn.com.br/redirect/288913',
+    checkoutUrl: 'https://payfast.greenn.com.br/atksj3t/offer/HSFWWf?b_id_1=8g6rg5g&b_offer_1=Kc6Vd3&b_id_2=6hp37ke&b_offer_2=GE9L9y&b_id_3=7maq232&b_offer_3=8RAAaC&b_id_4=qbt9rz5&b_offer_4=LggXs5',
     upsellPrice: 57,
     upsellCheckoutUrl: 'https://payfast.greenn.com.br/redirect/288914',
     features: [
@@ -25,7 +25,7 @@ export const PLANS = {
     name: 'Workshop + Apostila',
     price: 67,
     nextLotPrice: 97,
-    checkoutUrl: 'https://payfast.greenn.com.br/redirect/288911',
+    checkoutUrl: 'https://payfast.greenn.com.br/atksj3t/offer/sfMOUC?b_id_1=8g6rg5g&b_offer_1=Kc6Vd3&b_id_2=6hp37ke&b_offer_2=GE9L9y&b_id_3=7maq232&b_offer_3=8RAAaC&b_id_4=qbt9rz5&b_offer_4=LggXs5',
     highlight: true,
     badge: 'Mais escolhido',
     featuresHeader: 'Tudo do plano Workshop +',
