@@ -37,6 +37,8 @@ export default function PlanCard({
   upsellCheckoutUrl,
 }: Props) {
   const [showUpsell, setShowUpsell] = useState(false)
+  const fmtPrice = (p: number) =>
+    p % 1 === 0 ? String(p) : p.toLocaleString('pt-BR', { minimumFractionDigits: 2 })
 
   const handleClick = () => {
     if (upsellPrice && upsellCheckoutUrl) {
@@ -137,12 +139,12 @@ export default function PlanCard({
 
             {/* Ancoragem de valor */}
             <p className="mb-1 font-sans text-sm font-semibold text-red-500">
-              ⚠ Lote 2 em breve por R$ {nextLotPrice}
+              ⚠ Lote 2 em breve por R$ {fmtPrice(nextLotPrice)}
             </p>
 
             <div className="flex items-baseline gap-2">
               <span className="font-sans text-sm text-[var(--text-muted)]">R$</span>
-              <span className="font-serif text-5xl font-medium text-[var(--text-primary)]">{price}</span>
+              <span className="font-serif text-5xl font-medium text-[var(--text-primary)]">{fmtPrice(price)}</span>
               <span className="font-sans text-sm text-[var(--text-muted)]">à vista</span>
             </div>
 
@@ -193,7 +195,7 @@ export default function PlanCard({
                   animate={{ x: ['-100%', '200%'] }}
                   transition={{ duration: 1.8, repeat: Infinity, ease: 'linear', repeatDelay: 0.8 }}
                 />
-                <span className="relative z-10">Quero por R$ {price}</span>
+                <span className="relative z-10">Quero por R$ {fmtPrice(price)}</span>
               </button>
             ) : (
               /* Básico — glow verde */
@@ -209,7 +211,7 @@ export default function PlanCard({
                   animate={{ x: ['-100%', '200%'] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'linear', repeatDelay: 1.5 }}
                 />
-                <span className="relative z-10">Quero por R$ {price}</span>
+                <span className="relative z-10">Quero por R$ {fmtPrice(price)}</span>
               </button>
             )}
           </div>
