@@ -1,11 +1,10 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
 import Container from '@/components/ui/Container'
 import SectionTitle from '@/components/ui/SectionTitle'
 import PlanCard from '@/components/ui/PlanCard'
-import AnimateIn, { containerVariants, itemVariants } from '@/components/ui/AnimateIn'
+import AnimateIn from '@/components/ui/AnimateIn'
 import { PLANS } from '@/lib/constants'
 import { track } from '@/lib/analytics'
 
@@ -44,7 +43,6 @@ export default function Plans() {
 
         <AnimateIn variant="fadeUp" delay={0.1} className="mb-12 flex justify-center">
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-            {/* Badge lote ativo com dot pulsante */}
             <div className="flex items-center gap-2 rounded-full border border-[var(--border-glow)] bg-[rgba(74,222,128,0.08)] px-4 py-2">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--green-glow)] opacity-75" />
@@ -54,10 +52,7 @@ export default function Plans() {
                 Lote 1 ativo
               </span>
             </div>
-
             <span className="hidden text-[var(--border-subtle)] sm:inline" aria-hidden="true">|</span>
-
-            {/* Próximo lote */}
             <div className="flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] px-4 py-2">
               <span className="font-sans text-xs uppercase tracking-widest text-[var(--text-muted)]">
                 Próximo lote
@@ -69,15 +64,8 @@ export default function Plans() {
           </div>
         </AnimateIn>
 
-        <motion.div
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 md:items-start"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-        >
-          {/* Mobile: premium primeiro */}
-          <motion.div variants={itemVariants} className="order-1 md:order-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 md:items-start">
+          <AnimateIn delay={0.12} className="order-1 md:order-2">
             <PlanCard
               name={PLANS.premium.name}
               price={PLANS.premium.price}
@@ -88,10 +76,10 @@ export default function Plans() {
               badge={PLANS.premium.badge}
               featuresHeader={PLANS.premium.featuresHeader}
               trackingId="click_checkout_67"
-              mockupImage="/mockup-bundle.png"
+              mockupImage="/mockup-bundle.webp"
             />
-          </motion.div>
-          <motion.div variants={itemVariants} className="order-2 md:order-1">
+          </AnimateIn>
+          <AnimateIn delay={0} className="order-2 md:order-1">
             <PlanCard
               name={PLANS.basic.name}
               price={PLANS.basic.price}
@@ -101,10 +89,10 @@ export default function Plans() {
               trackingId="click_checkout_47"
               upsellPrice={PLANS.basic.upsellPrice}
               upsellCheckoutUrl={PLANS.basic.upsellCheckoutUrl}
-              mockupImage="/mockup-bundle2.png"
+              mockupImage="/mockup-bundle2.webp"
             />
-          </motion.div>
-        </motion.div>
+          </AnimateIn>
+        </div>
       </Container>
     </section>
   )

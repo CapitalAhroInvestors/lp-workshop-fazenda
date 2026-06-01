@@ -1,10 +1,7 @@
-'use client'
-
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import Container from '@/components/ui/Container'
 import Eyebrow from '@/components/ui/Eyebrow'
-import AnimateIn, { containerVariants, itemVariants } from '@/components/ui/AnimateIn'
+import AnimateIn from '@/components/ui/AnimateIn'
 
 const BIO_PARAGRAPHS = [
   'Renato Rodrigues é Diretor de Negócios Nacionais e Internacionais da Capital Agro Investors. Doutor em Geoquímica Ambiental, possui mais de 20 anos de experiência em sustentabilidade, gestão agroambiental, estratégia e inovação no agronegócio.',
@@ -23,7 +20,6 @@ export default function Authority() {
       id="autoridade"
       className="relative overflow-hidden bg-[var(--bg-elevated)] py-24 md:py-32"
     >
-      {/* Glow verde sutil atrás da foto */}
       <div
         className="pointer-events-none absolute left-0 top-0 h-full w-[50%] opacity-30"
         style={{
@@ -34,20 +30,17 @@ export default function Authority() {
       />
 
       <Container>
-        {/* Eyebrow */}
         <AnimateIn variant="fadeUp" className="mb-10 text-center">
           <Eyebrow>QUEM VAI CONDUZIR</Eyebrow>
         </AnimateIn>
 
         <div className="flex flex-col items-center gap-0 md:flex-row md:items-end md:gap-8">
-
-          {/* Foto — PNG com fundo transparente, sem container/borda */}
           <AnimateIn
             variant="fadeLeft"
             className="relative w-full max-w-[340px] shrink-0 md:w-[42%]"
           >
             <Image
-              src="/renato.png"
+              src="/renato.webp"
               alt="Dr. Renato Rodrigues — Ex Pesquisador Embrapa, fundador da Capital Agro Investors"
               width={680}
               height={900}
@@ -57,7 +50,6 @@ export default function Authority() {
             />
           </AnimateIn>
 
-          {/* Conteúdo */}
           <AnimateIn
             variant="fadeRight"
             delay={0.1}
@@ -70,38 +62,17 @@ export default function Authority() {
               Ex Pesquisador Embrapa
             </p>
 
-            <motion.div
-              className="mb-10 flex flex-col gap-4 text-left"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-            >
-              {BIO_PARAGRAPHS.map((para) => (
-                <motion.p
-                  key={para.slice(0, 30)}
-                  variants={itemVariants}
-                  className="font-sans text-base leading-[1.7] text-[var(--text-secondary)]"
-                >
+            <div className="mb-10 flex flex-col gap-4 text-left">
+              {BIO_PARAGRAPHS.map((para, i) => (
+                <AnimateIn key={para.slice(0, 30)} as="p" delay={i * 0.12} className="font-sans text-base leading-[1.7] text-[var(--text-secondary)]">
                   {para}
-                </motion.p>
+                </AnimateIn>
               ))}
-            </motion.div>
+            </div>
 
-            {/* Stats */}
-            <motion.div
-              className="flex flex-wrap justify-center gap-8 md:justify-start"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-            >
-              {STATS.map((stat) => (
-                <motion.div
-                  key={stat.label}
-                  variants={itemVariants}
-                  className="flex flex-col items-center md:items-start"
-                >
+            <div className="flex flex-wrap justify-center gap-8 md:justify-start">
+              {STATS.map((stat, i) => (
+                <AnimateIn key={stat.label} delay={i * 0.1} className="flex flex-col items-center md:items-start">
                   <div className="flex items-baseline gap-1">
                     <span className="font-serif text-[52px] font-medium leading-none text-[var(--green-glow)]">
                       {stat.value}
@@ -115,9 +86,9 @@ export default function Authority() {
                   <span className="mt-1 font-sans text-xs text-[var(--text-muted)]">
                     {stat.label}
                   </span>
-                </motion.div>
+                </AnimateIn>
               ))}
-            </motion.div>
+            </div>
           </AnimateIn>
         </div>
       </Container>

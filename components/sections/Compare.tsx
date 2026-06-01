@@ -1,11 +1,8 @@
-'use client'
-
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { X, Check } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import SectionTitle from '@/components/ui/SectionTitle'
-import AnimateIn, { containerVariants, itemVariants } from '@/components/ui/AnimateIn'
+import AnimateIn from '@/components/ui/AnimateIn'
 
 const ROWS = [
   ['Não sabe o custo real por hectare', 'Custo por hectare calculado e atualizado'],
@@ -20,8 +17,6 @@ const ROWS = [
 export default function Compare() {
   return (
     <section id="comparativo" className="relative overflow-hidden py-24 md:py-32">
-      {/* Background: plantação de café com baixa opacidade */}
-      {/* TODO: adicione /public/cafe-bg.jpg — foto de plantação de café */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/cafe-bg.jpg"
@@ -32,7 +27,6 @@ export default function Compare() {
           sizes="100vw"
           loading="lazy"
         />
-        {/* Overlay escuro para manter legibilidade */}
         <div
           className="absolute inset-0"
           style={{
@@ -59,15 +53,9 @@ export default function Compare() {
             </div>
           </AnimateIn>
 
-          <motion.div
-            className="flex flex-col gap-3"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <div className="flex flex-col gap-3">
             {ROWS.map(([left, right], i) => (
-              <motion.div key={i} variants={itemVariants} className="grid grid-cols-2 gap-6">
+              <AnimateIn key={i} delay={i * 0.07} className="grid grid-cols-2 gap-6">
                 <div className="flex items-center gap-3 rounded-xl bg-[var(--bg-card)] px-5 py-4">
                   <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[rgba(220,38,38,0.15)]">
                     <X size={12} className="text-[var(--danger)]" aria-hidden="true" />
@@ -80,9 +68,9 @@ export default function Compare() {
                   </div>
                   <span className="font-sans text-sm text-[var(--text-secondary)]">{right}</span>
                 </div>
-              </motion.div>
+              </AnimateIn>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Mobile */}

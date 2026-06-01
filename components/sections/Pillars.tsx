@@ -1,10 +1,7 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import Container from '@/components/ui/Container'
 import SectionTitle from '@/components/ui/SectionTitle'
 import PillarCard from '@/components/ui/PillarCard'
-import AnimateIn, { containerVariants, itemVariants } from '@/components/ui/AnimateIn'
+import AnimateIn from '@/components/ui/AnimateIn'
 
 const PILLARS = [
   {
@@ -49,24 +46,18 @@ export default function Pillars() {
             className="absolute left-6 top-6 hidden h-[calc(100%-96px)] w-px bg-[var(--border-subtle)] md:block"
             aria-hidden="true"
           />
-          <motion.div
-            className="flex flex-col"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-          >
+          <div className="flex flex-col">
             {PILLARS.map((pillar, i) => (
-              <motion.div key={pillar.number} variants={itemVariants}>
+              <AnimateIn key={pillar.number} delay={i * 0.1}>
                 <PillarCard
                   number={pillar.number}
                   title={pillar.title}
                   description={pillar.description}
                   isLast={i === PILLARS.length - 1}
                 />
-              </motion.div>
+              </AnimateIn>
             ))}
-          </motion.div>
+          </div>
         </div>
       </Container>
     </section>

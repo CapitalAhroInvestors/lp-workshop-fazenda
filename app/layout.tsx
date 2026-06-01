@@ -116,11 +116,11 @@ export default function RootLayout({
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck=""
           data-utmify-prevent-subids=""
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         {/* UTMify — Pixel */}
-        <Script id="utmify-pixel" strategy="afterInteractive">
+        <Script id="utmify-pixel" strategy="lazyOnload">
           {`
             window.pixelId = "6a162382c4557a58b68ee762";
             var a = document.createElement("script");
@@ -133,7 +133,7 @@ export default function RootLayout({
 
         {/* Meta Pixel */}
         {META_PIXEL_ID && (
-          <Script id="meta-pixel" strategy="afterInteractive">
+          <Script id="meta-pixel" strategy="lazyOnload">
             {`
               !function(f,b,e,v,n,t,s)
               {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

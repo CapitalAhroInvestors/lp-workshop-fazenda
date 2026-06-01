@@ -10,7 +10,7 @@ export default function LogoBand() {
             Uma realização
           </p>
           <Image
-            src="/logo-escola.png"
+            src="/logo-escola.webp"
             alt="Capital Agro Investors"
             width={180}
             height={64}

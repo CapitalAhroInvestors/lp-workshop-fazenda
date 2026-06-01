@@ -7,7 +7,7 @@ export default function Footer() {
       <Container>
         <div className="flex flex-col items-center gap-4 text-center">
           <Image
-            src="/logo-escola.png"
+            src="/logo-escola.webp"
             alt="Capital Agro Investors"
             width={140}
             height={52}

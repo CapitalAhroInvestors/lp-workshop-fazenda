@@ -1,12 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useRef } from 'react'
 import Container from '@/components/ui/Container'
 import AnimateIn from '@/components/ui/AnimateIn'
 import SectionTitle from '@/components/ui/SectionTitle'
-
-// ─── Icons ───────────────────────────────────────────────────────────────────
 
 const BackIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="#aebac1" aria-label="Voltar">
@@ -30,10 +27,8 @@ const DotsIcon = () => (
 )
 const SignalIcon = () => (
   <svg width="14" height="11" viewBox="0 0 14 11" fill="#aebac1" aria-hidden="true">
-    <rect x="0" y="7" width="2" height="4" rx="0.5" />
-    <rect x="3" y="5" width="2" height="6" rx="0.5" />
-    <rect x="6" y="3" width="2" height="8" rx="0.5" />
-    <rect x="9" y="1" width="2" height="10" rx="0.5" />
+    <rect x="0" y="7" width="2" height="4" rx="0.5" /><rect x="3" y="5" width="2" height="6" rx="0.5" />
+    <rect x="6" y="3" width="2" height="8" rx="0.5" /><rect x="9" y="1" width="2" height="10" rx="0.5" />
     <rect x="12" y="0" width="2" height="11" rx="0.5" />
   </svg>
 )
@@ -60,29 +55,14 @@ const PlayIcon = () => (
   </svg>
 )
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 type TextMsg  = { type: 'text';  text: string; time: string; isFirst?: boolean }
 type AudioMsg = { type: 'audio'; duration: string; time: string; transcript: string }
 type Msg = TextMsg | AudioMsg
-
-interface Conv {
-  name: string
-  sub: string
-  initials: string
-  avatarBg: string
-  status: string
-  messages: Msg[]
-}
-
-// ─── Data ─────────────────────────────────────────────────────────────────────
+interface Conv { name: string; sub: string; initials: string; avatarBg: string; status: string; messages: Msg[] }
 
 const CONVS: Conv[] = [
   {
-    name: 'Ronilson M.',
-    sub: 'Produtor · Goiás',
-    initials: 'R',
-    avatarBg: '#00a884',
+    name: 'Ronilson M.', sub: 'Produtor · Goiás', initials: 'R', avatarBg: '#00a884',
     status: 'visto por último hoje às 19:45',
     messages: [
       { type: 'text', text: 'Dr. Renato, boa noite 🙏', time: '19:42', isFirst: true },
@@ -93,10 +73,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
-    name: 'Vinícius P.',
-    sub: 'Cafeicultor · Sul de Minas',
-    initials: 'V',
-    avatarBg: '#7c4dff',
+    name: 'Vinícius P.', sub: 'Cafeicultor · Sul de Minas', initials: 'V', avatarBg: '#7c4dff',
     status: 'online',
     messages: [
       { type: 'text', text: 'Renato bom dia', time: '08:17', isFirst: true },
@@ -108,10 +85,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
-    name: 'Eduardo C.',
-    sub: 'Cafeicultor · Cerrado Mineiro',
-    initials: 'E',
-    avatarBg: '#e53935',
+    name: 'Eduardo C.', sub: 'Cafeicultor · Cerrado Mineiro', initials: 'E', avatarBg: '#e53935',
     status: 'visto por último hoje às 21:12',
     messages: [
       { type: 'text', text: 'boa noite pessoal do grupo', time: '21:08', isFirst: true },
@@ -122,10 +96,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
-    name: 'Roberto F.',
-    sub: 'Produtor de grãos · Bahia',
-    initials: 'R',
-    avatarBg: '#1976d2',
+    name: 'Roberto F.', sub: 'Produtor de grãos · Bahia', initials: 'R', avatarBg: '#1976d2',
     status: 'online',
     messages: [
       { type: 'text', text: 'fala Renato', time: '14:33', isFirst: true },
@@ -133,10 +104,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
-    name: 'Marcos A.',
-    sub: 'Pecuarista · Mato Grosso',
-    initials: 'M',
-    avatarBg: '#f57c00',
+    name: 'Marcos A.', sub: 'Pecuarista · Mato Grosso', initials: 'M', avatarBg: '#f57c00',
     status: 'visto por último hoje às 17:02',
     messages: [
       { type: 'text', text: 'renato', time: '16:55', isFirst: true },
@@ -148,10 +116,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
-    name: 'Antônio L.',
-    sub: 'Produtor de soja · Maranhão',
-    initials: 'A',
-    avatarBg: '#00897b',
+    name: 'Antônio L.', sub: 'Produtor de soja · Maranhão', initials: 'A', avatarBg: '#00897b',
     status: 'visto por último hoje às 12:10',
     messages: [
       { type: 'text', text: 'Dr Renato', time: '12:04', isFirst: true },
@@ -164,33 +129,16 @@ const CONVS: Conv[] = [
   },
 ]
 
-// ─── Waveform ─────────────────────────────────────────────────────────────────
-
 const WAVE = [3, 7, 11, 15, 9, 5, 12, 17, 8, 4, 13, 7, 3, 8, 11, 16, 9, 5, 14, 8, 4, 11, 6, 3, 9, 13, 7, 5, 10, 6]
-
-// ─── Bubble components ────────────────────────────────────────────────────────
 
 function TextBubble({ msg }: { msg: TextMsg }) {
   return (
     <div style={{ display: 'flex', justifyContent: 'flex-start', position: 'relative' }}>
       {msg.isFirst && (
-        <div aria-hidden="true" style={{
-          position: 'absolute', top: 0, left: -6,
-          width: 0, height: 0,
-          borderRight: '7px solid #202c33',
-          borderBottom: '7px solid transparent',
-        }} />
+        <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: -6, width: 0, height: 0, borderRight: '7px solid #202c33', borderBottom: '7px solid transparent' }} />
       )}
-      <div style={{
-        background: '#202c33',
-        borderRadius: msg.isFirst ? '0 7.5px 7.5px 7.5px' : 7.5,
-        padding: '6px 10px 4px',
-        maxWidth: '85%',
-        boxShadow: '0 1px 2px rgba(0,0,0,0.3)',
-      }}>
-        <p style={{ color: '#e9edef', fontSize: 13, lineHeight: 1.45, margin: 0, wordBreak: 'break-word' }}>
-          {msg.text}
-        </p>
+      <div style={{ background: '#202c33', borderRadius: msg.isFirst ? '0 7.5px 7.5px 7.5px' : 7.5, padding: '6px 10px 4px', maxWidth: '85%', boxShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+        <p style={{ color: '#e9edef', fontSize: 13, lineHeight: 1.45, margin: 0, wordBreak: 'break-word' }}>{msg.text}</p>
         <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 3, marginTop: 2 }}>
           <span style={{ color: '#8696a0', fontSize: 10 }}>{msg.time}</span>
         </div>
@@ -202,29 +150,15 @@ function TextBubble({ msg }: { msg: TextMsg }) {
 function AudioBubble({ msg }: { msg: AudioMsg }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-      {/* Audio balloon */}
       <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-        <div style={{
-          background: '#202c33',
-          borderRadius: 7.5,
-          padding: '8px 10px 4px',
-          maxWidth: '90%',
-          boxShadow: '0 1px 2px rgba(0,0,0,0.3)',
-        }}>
+        <div style={{ background: '#202c33', borderRadius: 7.5, padding: '8px 10px 4px', maxWidth: '90%', boxShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <div style={{
-              width: 34, height: 34, borderRadius: '50%',
-              background: '#00a884',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-            }}>
+            <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#00a884', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <PlayIcon />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1 }}>
               {WAVE.map((h, i) => (
-                <div key={i} aria-hidden="true" style={{
-                  width: 2, height: h, borderRadius: 1, flexShrink: 0,
-                  background: i < 15 ? '#00a884' : '#3b4a54',
-                }} />
+                <div key={i} aria-hidden="true" style={{ width: 2, height: h, borderRadius: 1, flexShrink: 0, background: i < 15 ? '#00a884' : '#3b4a54' }} />
               ))}
             </div>
             <span style={{ color: '#8696a0', fontSize: 11, flexShrink: 0 }}>{msg.duration}</span>
@@ -234,18 +168,9 @@ function AudioBubble({ msg }: { msg: AudioMsg }) {
           </div>
         </div>
       </div>
-      {/* Transcript */}
       <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-        <div style={{
-          background: '#202c33',
-          borderRadius: 7.5,
-          padding: '6px 10px 4px',
-          maxWidth: '90%',
-          boxShadow: '0 1px 2px rgba(0,0,0,0.3)',
-        }}>
-          <p style={{ color: '#8696a0', fontSize: 12, fontStyle: 'italic', lineHeight: 1.4, margin: 0 }}>
-            🎙️ {msg.transcript}
-          </p>
+        <div style={{ background: '#202c33', borderRadius: 7.5, padding: '6px 10px 4px', maxWidth: '90%', boxShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+          <p style={{ color: '#8696a0', fontSize: 12, fontStyle: 'italic', lineHeight: 1.4, margin: 0 }}>🎙️ {msg.transcript}</p>
           <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2 }}>
             <span style={{ color: '#8696a0', fontSize: 10 }}>14:34</span>
           </div>
@@ -255,143 +180,57 @@ function AudioBubble({ msg }: { msg: AudioMsg }) {
   )
 }
 
-// ─── Phone card ───────────────────────────────────────────────────────────────
-
 function PhoneCard({ conv }: { conv: Conv }) {
   const now = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-
   return (
-    <article style={{
-      background: '#111b21',
-      borderRadius: 28,
-      border: '2px solid #1f2c34',
-      overflow: 'hidden',
-      boxShadow: '0 8px 40px rgba(0,0,0,0.6)',
-      fontFamily: "'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
-    }}>
-      {/* Status bar */}
-      <div style={{
-        background: '#111b21',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '10px 16px 4px',
-      }}>
+    <article style={{ background: '#111b21', borderRadius: 28, border: '2px solid #1f2c34', overflow: 'hidden', boxShadow: '0 8px 40px rgba(0,0,0,0.6)', fontFamily: "'Segoe UI', 'Helvetica Neue', Arial, sans-serif" }}>
+      <div style={{ background: '#111b21', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 16px 4px' }}>
         <span style={{ color: '#aebac1', fontSize: 12, fontWeight: 600 }}>{now}</span>
         <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-          <SignalIcon />
-          <SignalIcon />
-          <BatteryIcon />
+          <SignalIcon /><SignalIcon /><BatteryIcon />
         </div>
       </div>
-
-      {/* WA Header */}
-      <div style={{
-        background: '#202c33',
-        display: 'flex', alignItems: 'center', gap: 8,
-        padding: '6px 10px 8px',
-      }}>
+      <div style={{ background: '#202c33', display: 'flex', alignItems: 'center', gap: 8, padding: '6px 10px 8px' }}>
         <BackIcon />
-        <div style={{
-          width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-          background: conv.avatarBg,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: '#fff', fontSize: 14, fontWeight: 700,
-        }} aria-hidden="true">
-          {conv.initials}
-        </div>
+        <div style={{ width: 36, height: 36, borderRadius: '50%', flexShrink: 0, background: conv.avatarBg, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 14, fontWeight: 700 }} aria-hidden="true">{conv.initials}</div>
         <div style={{ flex: 1, overflow: 'hidden' }}>
-          <p style={{ color: '#e9edef', fontSize: 14, fontWeight: 600, margin: 0, lineHeight: 1.3 }}>
-            {conv.name}
-          </p>
+          <p style={{ color: '#e9edef', fontSize: 14, fontWeight: 600, margin: 0, lineHeight: 1.3 }}>{conv.name}</p>
           <p style={{ color: '#8696a0', fontSize: 11, margin: 0 }}>{conv.status}</p>
         </div>
         <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-          <VideoIcon />
-          <PhoneIcon />
-          <DotsIcon />
+          <VideoIcon /><PhoneIcon /><DotsIcon />
         </div>
       </div>
-
-      {/* Chat area */}
-      <div style={{
-        background: '#0b141a',
-        padding: '10px 10px 6px',
-        display: 'flex', flexDirection: 'column', gap: 3,
-        minHeight: 220,
-      }}>
-        {/* HOJE pill */}
+      <div style={{ background: '#0b141a', padding: '10px 10px 6px', display: 'flex', flexDirection: 'column', gap: 3, minHeight: 220 }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 6 }}>
-          <span style={{
-            background: '#182229', color: '#8696a0',
-            fontSize: 11, padding: '3px 10px', borderRadius: 6,
-            boxShadow: '0 1px 2px rgba(0,0,0,0.3)',
-          }}>HOJE</span>
+          <span style={{ background: '#182229', color: '#8696a0', fontSize: 11, padding: '3px 10px', borderRadius: 6, boxShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>HOJE</span>
         </div>
-
         {conv.messages.map((msg, i) =>
-          msg.type === 'audio'
-            ? <AudioBubble key={i} msg={msg} />
-            : <TextBubble key={i} msg={msg} />
+          msg.type === 'audio' ? <AudioBubble key={i} msg={msg} /> : <TextBubble key={i} msg={msg} />
         )}
       </div>
-
-      {/* Input bar */}
-      <div style={{
-        background: '#202c33',
-        display: 'flex', alignItems: 'center', gap: 8,
-        padding: '8px 10px',
-      }}>
+      <div style={{ background: '#202c33', display: 'flex', alignItems: 'center', gap: 8, padding: '8px 10px' }}>
         <EmojiIcon />
-        <div style={{
-          flex: 1, background: '#2a3942', borderRadius: 20,
-          padding: '7px 12px',
-          color: '#8696a0', fontSize: 13,
-        }}>
-          Mensagem
-        </div>
+        <div style={{ flex: 1, background: '#2a3942', borderRadius: 20, padding: '7px 12px', color: '#8696a0', fontSize: 13 }}>Mensagem</div>
         <MicIcon />
       </div>
     </article>
   )
 }
 
-const GAP = 20
-const SPRING = { type: 'spring', stiffness: 280, damping: 30 } as const
-
-// ─── Section ──────────────────────────────────────────────────────────────────
-
 export default function WhatsappTestimonials() {
-  const [current, setCurrent]   = useState(0)
-  const [cardW,   setCardW]     = useState(320)
-  const [perPage, setPerPage]   = useState(1)
-  const containerRef            = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [current, setCurrent] = useState(0)
 
-  useEffect(() => {
-    const update = () => {
-      const per = window.innerWidth >= 1024 ? 3 : 1
-      setPerPage(per)
-      if (containerRef.current) {
-        const w = (containerRef.current.offsetWidth - GAP * (per - 1)) / per
-        setCardW(w)
-      }
-    }
-    update()
-    window.addEventListener('resize', update)
-    return () => window.removeEventListener('resize', update)
-  }, [])
-
-  const maxIdx  = Math.max(0, CONVS.length - perPage)
-  const numDots = maxIdx + 1
-  const trackX  = -(current * (cardW + GAP))
-  const minDrag = -(maxIdx * (cardW + GAP))
-
-  const go = (idx: number) => setCurrent(Math.max(0, Math.min(idx, maxIdx)))
+  const go = (idx: number) => {
+    if (!trackRef.current) return
+    const card = trackRef.current.children[idx] as HTMLElement
+    trackRef.current.scrollTo({ left: card.offsetLeft, behavior: 'smooth' })
+    setCurrent(idx)
+  }
 
   return (
-    <section
-      id="depoimentos-whatsapp"
-      className="py-24 md:py-32"
-      style={{ background: '#000' }}
-    >
+    <section id="depoimentos-whatsapp" className="py-24 md:py-32" style={{ background: '#000' }}>
       <Container>
         <AnimateIn variant="fadeUp" className="mb-4">
           <SectionTitle eyebrow="O QUE OUTROS PRODUTORES ESTÃO DIZENDO" align="center">
@@ -405,78 +244,50 @@ export default function WhatsappTestimonials() {
           </p>
         </AnimateIn>
 
-        {/* Track */}
-        <div ref={containerRef} className="overflow-hidden">
-          <motion.div
-            drag="x"
-            dragConstraints={{ left: minDrag, right: 0 }}
-            dragElastic={0.07}
-            onDragEnd={(_, info) => {
-              if (info.offset.x < -(cardW * 0.22)) go(current + 1)
-              else if (info.offset.x > cardW * 0.22) go(current - 1)
-            }}
-            animate={{ x: trackX }}
-            transition={SPRING}
-            style={{ display: 'flex', gap: GAP, cursor: 'grab', userSelect: 'none', touchAction: 'pan-y' }}
-          >
-            {CONVS.map((conv, i) => (
-              <div key={i} style={{ width: cardW, flexShrink: 0 }}>
-                <PhoneCard conv={conv} />
-              </div>
-            ))}
-          </motion.div>
+        <div ref={trackRef} className="carousel-track">
+          {CONVS.map((conv, i) => (
+            <div key={i} className="carousel-card">
+              <PhoneCard conv={conv} />
+            </div>
+          ))}
         </div>
 
-        {/* Controls */}
         <div className="mt-8 flex flex-col items-center gap-3">
           <div className="flex items-center gap-5">
             <button
-              onClick={() => go(current - 1)}
+              onClick={() => go(Math.max(0, current - 1))}
               disabled={current === 0}
               aria-label="Anterior"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] transition-colors hover:border-[var(--border-glow)] hover:text-white disabled:opacity-25"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
-              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" /></svg>
             </button>
 
             <div className="flex items-center gap-2" role="tablist" aria-label="Navegação de depoimentos">
-              {Array.from({ length: numDots }).map((_, i) => (
+              {CONVS.map((_, i) => (
                 <button
                   key={i}
                   role="tab"
                   aria-selected={i === current}
                   aria-label={`Posição ${i + 1}`}
                   onClick={() => go(i)}
-                  style={{
-                    width: i === current ? 20 : 7,
-                    height: 7,
-                    borderRadius: 4,
-                    background: i === current ? 'var(--green-bright)' : 'var(--border-subtle)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: 0,
-                    transition: 'all 0.2s',
-                  }}
+                  style={{ width: i === current ? 20 : 7, height: 7, borderRadius: 4, background: i === current ? 'var(--green-bright)' : 'var(--border-subtle)', border: 'none', cursor: 'pointer', padding: 0, transition: 'all 0.2s' }}
                 />
               ))}
             </div>
 
             <button
-              onClick={() => go(current + 1)}
-              disabled={current === maxIdx}
+              onClick={() => go(Math.min(CONVS.length - 1, current + 1))}
+              disabled={current === CONVS.length - 1}
               aria-label="Próximo"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] transition-colors hover:border-[var(--border-glow)] hover:text-white disabled:opacity-25"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
             </button>
           </div>
 
           <p className="font-sans text-xs text-[var(--text-muted)]">
-            {current + 1}–{Math.min(current + perPage, CONVS.length)} de {CONVS.length}
+            {current + 1} de {CONVS.length}
           </p>
         </div>
       </Container>

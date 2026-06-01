@@ -1,14 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, X } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import SectionTitle from '@/components/ui/SectionTitle'
 import AnimateIn from '@/components/ui/AnimateIn'
 import { track } from '@/lib/analytics'
-
-const EASE = [0.22, 1, 0.36, 1] as const
 
 const FAQS = [
   {
@@ -65,34 +62,24 @@ export default function Faq() {
                     <span className="font-sans text-base font-medium text-[var(--text-primary)] md:text-[17px]">
                       {faq.q}
                     </span>
-                    <motion.div
-                      animate={{ rotate: isOpen ? 45 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="shrink-0"
-                    >
+                    <span className={`faq-icon shrink-0 ${isOpen ? 'faq-icon-open' : ''}`}>
                       {isOpen
                         ? <X size={18} className="text-[var(--green-glow)]" aria-hidden="true" />
                         : <Plus size={18} className="text-[var(--text-muted)]" aria-hidden="true" />
                       }
-                    </motion.div>
+                    </span>
                   </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        id={itemId}
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: EASE }}
-                        style={{ overflow: 'hidden' }}
-                      >
-                        <p className="pb-5 font-sans text-base leading-[1.7] text-[var(--text-secondary)]">
-                          {faq.a}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <div
+                    id={itemId}
+                    className={`faq-body ${isOpen ? 'faq-open' : ''}`}
+                    aria-hidden={!isOpen}
+                  >
+                    <div>
+                      <p className="pb-5 font-sans text-base leading-[1.7] text-[var(--text-secondary)]">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </AnimateIn>
             )

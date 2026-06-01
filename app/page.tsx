@@ -1,8 +1,3 @@
-'use client'
-
-import { useEffect } from 'react'
-import { persistUtms } from '@/lib/analytics'
-
 import Countdown from '@/components/sections/Countdown'
 import Hero from '@/components/sections/Hero'
 import Reality from '@/components/sections/Reality'
@@ -18,14 +13,12 @@ import Guarantee from '@/components/sections/Guarantee'
 import Faq from '@/components/sections/Faq'
 import FinalCta from '@/components/sections/FinalCta'
 import Footer from '@/components/sections/Footer'
+import UtmPersist from '@/components/ui/UtmPersist'
 
 export default function Home() {
-  useEffect(() => {
-    persistUtms()
-  }, [])
-
   return (
     <>
+      <UtmPersist />
       <Countdown />
       <main id="main-content">
         <Hero />

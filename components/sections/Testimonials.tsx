@@ -1,10 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import Container from '@/components/ui/Container'
 import SectionTitle from '@/components/ui/SectionTitle'
-import AnimateIn, { containerVariants, itemVariants } from '@/components/ui/AnimateIn'
+import AnimateIn from '@/components/ui/AnimateIn'
 
 interface Testimonial {
   quote: string
@@ -22,14 +21,14 @@ const TESTIMONIALS: Testimonial[] = [
     city: 'Mutum (MG)',
     culture: 'Café Arábica',
     area: '~30ha',
-    slotImage: '/depoimento-ronilson.png',
+    slotImage: '/depoimento-ronilson.webp',
   },
   {
     quote: 'A Capital tá entregando o que ela realmente prometeu. Melhoria de produtividade na lavoura.',
     name: 'Vinícius',
     city: 'Brejetuba (ES)',
     culture: 'Café Conilon',
-    slotImage: '/depoimento-vinicius.png',
+    slotImage: '/depoimento-vinicius.webp',
   },
   {
     quote: 'Era pra eu arrancar a lavoura. Hoje, ela mudou da água pro vinho.',
@@ -37,7 +36,7 @@ const TESTIMONIALS: Testimonial[] = [
     city: 'Muniz Freire (ES)',
     culture: 'Café Arábica',
     area: '12ha',
-    slotImage: '/depoimento-muniz-freire.png',
+    slotImage: '/depoimento-muniz-freire.webp',
   },
 ]
 
@@ -51,17 +50,11 @@ export default function Testimonials() {
           </SectionTitle>
         </AnimateIn>
 
-        <motion.div
-          className="flex snap-x snap-mandatory gap-6 overflow-x-auto scrollbar-hide md:grid md:grid-cols-3 md:overflow-visible"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-        >
-          {TESTIMONIALS.map((t) => (
-            <motion.div
+        <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto scrollbar-hide md:grid md:grid-cols-3 md:overflow-visible">
+          {TESTIMONIALS.map((t, i) => (
+            <AnimateIn
               key={t.name + t.city}
-              variants={itemVariants}
+              delay={i * 0.12}
               className="flex min-w-[85vw] snap-center flex-col rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-4 md:min-w-0 md:p-6"
             >
               {t.slotImage ? (
@@ -87,9 +80,9 @@ export default function Testimonials() {
                   </div>
                 </>
               )}
-            </motion.div>
+            </AnimateIn>
           ))}
-        </motion.div>
+        </div>
       </Container>
     </section>
   )

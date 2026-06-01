@@ -1,11 +1,6 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import Container from '@/components/ui/Container'
 import SectionTitle from '@/components/ui/SectionTitle'
-import AnimateIn, { containerVariants, itemVariants } from '@/components/ui/AnimateIn'
-
-const EASE = [0.22, 1, 0.36, 1] as const
+import AnimateIn from '@/components/ui/AnimateIn'
 
 const CARDS = [
   { value: '-36%', label: 'Margem da soja' },
@@ -27,17 +22,11 @@ export default function Reality() {
           </SectionTitle>
         </AnimateIn>
 
-        <motion.div
-          className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-        >
-          {CARDS.map((card) => (
-            <motion.div
+        <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+          {CARDS.map((card, i) => (
+            <AnimateIn
               key={card.label}
-              variants={itemVariants}
+              delay={i * 0.12}
               className="flex flex-col items-center rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-8 text-center"
             >
               <span className="font-serif text-[72px] font-medium leading-none text-[var(--danger)] md:text-[80px]">
@@ -46,9 +35,9 @@ export default function Reality() {
               <span className="mt-3 font-sans text-sm text-[var(--text-muted)]">
                 {card.label}
               </span>
-            </motion.div>
+            </AnimateIn>
           ))}
-        </motion.div>
+        </div>
 
         <AnimateIn variant="fadeUp" delay={0.2}>
           <p className="mx-auto max-w-[720px] text-center font-sans text-lg leading-[1.6] text-[var(--text-secondary)] md:text-xl">
