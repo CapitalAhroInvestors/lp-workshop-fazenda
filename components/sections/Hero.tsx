@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { Calendar, Clock, Wifi, Timer } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import CtaButton from '@/components/ui/CtaButton'
-import { PLANS } from '@/lib/constants'
 
 const INFO_ITEMS = [
   { icon: Calendar, label: '10 de junho' },
@@ -76,7 +75,7 @@ export default function Hero() {
 
           {/* CTA principal */}
           <div style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.24s both' }}>
-            <CtaButton href={PLANS.basic.checkoutUrl} trackingId="hero_cta_primary" size="lg">
+            <CtaButton href="#planos" trackingId="hero_cta_primary" size="lg" isAnchor>
               Quero enxergar onde minha fazenda perde dinheiro — R$ 49,90
             </CtaButton>
           </div>
