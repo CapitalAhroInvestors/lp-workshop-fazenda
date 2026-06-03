@@ -39,14 +39,7 @@ export default function Reality() {
           ))}
         </div>
 
-        <AnimateIn variant="fadeUp" delay={0.2}>
-          <p className="mx-auto max-w-[720px] text-center font-sans text-lg leading-[1.6] text-[var(--text-secondary)] md:text-xl">
-            E mesmo assim, milhares de produtores vendem sua produção sem saber exatamente se
-            estão ganhando ou perdendo dinheiro.
-          </p>
-        </AnimateIn>
-
-        <AnimateIn variant="fadeUp" delay={0.32} className="mt-10">
+        <AnimateIn variant="fadeUp" delay={0.2} className="mt-2">
           <p className="mx-auto max-w-[680px] text-center font-sans text-lg font-semibold leading-[1.6] text-[var(--text-primary)] md:text-xl">
             Margem apertada não perdoa decisão por intuição. Em ano assim, quem não enxerga o
             próprio custo não perde no mercado —{' '}
