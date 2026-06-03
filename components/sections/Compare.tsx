@@ -38,7 +38,8 @@ export default function Compare() {
       <Container>
         <AnimateIn variant="fadeUp" className="relative z-10 mb-14">
           <SectionTitle eyebrow="O DIVISOR DE ÁGUAS" align="center">
-            A diferença entre quem <em>improvisa</em> e quem <em>profissionaliza</em>.
+            De produtor a empresário rural. A diferença está em{' '}
+            <em>5 sistemas</em>.
           </SectionTitle>
         </AnimateIn>
 

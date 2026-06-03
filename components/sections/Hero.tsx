@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Calendar, Clock, Wifi, Timer } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import CtaButton from '@/components/ui/CtaButton'
+import { PLANS } from '@/lib/constants'
 
 const INFO_ITEMS = [
   { icon: Calendar, label: '10 de junho' },
@@ -56,47 +57,57 @@ export default function Hero() {
       <Container className="relative z-10 py-28 md:py-36">
         <div className="flex flex-col items-center text-center">
 
+          {/* Pré-título — tensão antes do H1 */}
+          <p
+            className="mb-5 max-w-[680px] font-sans text-[15px] font-medium leading-[1.6] text-white/80 md:text-[17px]"
+            style={{ animation: 'hero-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) both' }}
+          >
+            Você produz, vende e movimenta dinheiro o ano inteiro — e ainda assim não sabe dizer, com número, se lucrou, se perdeu ou só girou caixa.
+          </p>
+
+          {/* H1 */}
           <h1
             className="mb-6 max-w-[760px] font-serif text-[42px] font-medium leading-[1.05] text-white md:text-[72px]"
-            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both' }}
+            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s both' }}
           >
             A fazenda que funciona como{' '}
             <em className="italic text-[var(--green-glow)]">empresa</em>.
           </h1>
 
+          {/* Subtítulo */}
           <p
-            className="mb-10 max-w-[560px] font-sans text-base leading-[1.65] text-white/75 md:text-[18px]"
-            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s both' }}
+            className="mb-10 max-w-[580px] font-sans text-base leading-[1.65] text-white/75 md:text-[18px]"
+            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both' }}
           >
-            Workshop online com Dr. Renato Rodrigues (Ex Pesquisador Embrapa) sobre os 5 sistemas que
-            separam fazenda lucrativa de fazenda que só sobrevive.
+            Workshop ao vivo com o Dr. Renato Rodrigues (ex-pesquisador Embrapa) sobre os 5 sistemas que separam a fazenda que constrói patrimônio da que só sobrevive à próxima safra.
           </p>
 
+          {/* CTA principal */}
+          <div style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.32s both' }}>
+            <CtaButton href={PLANS.basic.checkoutUrl} trackingId="hero_cta_primary" size="lg">
+              Quero enxergar onde minha fazenda perde dinheiro — R$ 49,90
+            </CtaButton>
+          </div>
+
+          {/* Régua de credibilidade — discreta, abaixo do CTA */}
           <div
-            className="mb-10 flex flex-wrap justify-center gap-3"
-            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.28s both' }}
+            className="mt-8 flex flex-wrap justify-center gap-3"
+            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.44s both' }}
           >
             {INFO_ITEMS.map(({ icon: Icon, label }, i) => (
               <div
                 key={label}
-                className="flex items-center gap-2.5 rounded-full border border-[rgba(74,222,128,0.45)] bg-[rgba(0,0,0,0.45)] px-4 py-2.5 backdrop-blur-sm"
-                style={{ animation: `hero-scale-in 0.5s cubic-bezier(0.22,1,0.36,1) ${0.32 + i * 0.07}s both` }}
+                className="flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.15)] bg-[rgba(0,0,0,0.35)] px-3 py-1.5 backdrop-blur-sm"
+                style={{ animation: `hero-scale-in 0.4s cubic-bezier(0.22,1,0.36,1) ${0.46 + i * 0.06}s both` }}
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[var(--green-glow)] text-[var(--green-glow)]">
-                  <Icon size={14} strokeWidth={1.5} aria-hidden="true" />
-                </span>
-                <span className="font-sans text-sm font-medium text-white md:text-[15px]">
+                <Icon size={13} strokeWidth={1.5} className="text-[var(--green-glow)]" aria-hidden="true" />
+                <span className="font-sans text-xs text-white/70">
                   {label}
                 </span>
               </div>
             ))}
           </div>
 
-          <div style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.48s both' }}>
-            <CtaButton href="#planos" trackingId="scroll_to_planos" size="lg" isAnchor>
-              Ver os planos do workshop ↓
-            </CtaButton>
-          </div>
         </div>
       </Container>
     </section>

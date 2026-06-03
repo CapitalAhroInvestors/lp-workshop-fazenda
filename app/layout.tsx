@@ -20,7 +20,7 @@ const sans = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://capitalagro.com.br'),
+  metadataBase: new URL('https://www.capitalescolaagro.com.br'),
   title: 'Workshop A Fazenda Que Funciona Como Empresa | Capital Agro',
   description:
     'Workshop online com Dr. Renato Rodrigues (Ex Pesquisador Embrapa) sobre os 5 sistemas que separam fazenda lucrativa de fazenda que só sobrevive. 10 de junho, 20h.',
@@ -59,7 +59,7 @@ const jsonLd = {
     {
       '@type': 'Offer',
       name: 'Workshop',
-      price: '47',
+      price: '49.90',
       priceCurrency: 'BRL',
       availability: 'https://schema.org/InStock',
     },

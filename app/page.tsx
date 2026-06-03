@@ -25,8 +25,8 @@ export default function Home() {
         <Hero />
         <Authority />
         <Reality />
-        <Pillars />
         <Compare />
+        <Pillars />
         <MidCta
           source="mid_cta_compare"
           text="Já deu pra perceber a diferença. Bora dar o próximo passo?"

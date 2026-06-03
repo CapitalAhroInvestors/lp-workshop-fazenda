@@ -58,10 +58,11 @@ const PlayIcon = () => (
 type TextMsg  = { type: 'text';  text: string; time: string; isFirst?: boolean }
 type AudioMsg = { type: 'audio'; duration: string; time: string; transcript: string }
 type Msg = TextMsg | AudioMsg
-interface Conv { name: string; sub: string; initials: string; avatarBg: string; status: string; messages: Msg[] }
+interface Conv { name: string; sub: string; initials: string; avatarBg: string; status: string; messages: Msg[]; objection: string }
 
 const CONVS: Conv[] = [
   {
+    objection: 'Mas é prático ou é só teoria?',
     name: 'Ronilson M.', sub: 'Produtor · Goiás', initials: 'R', avatarBg: '#00a884',
     status: 'visto por último hoje às 19:45',
     messages: [
@@ -73,6 +74,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
+    objection: 'Será que revela dinheiro que eu não enxergo?',
     name: 'Vinícius P.', sub: 'Cafeicultor · Sul de Minas', initials: 'V', avatarBg: '#7c4dff',
     status: 'online',
     messages: [
@@ -85,6 +87,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
+    objection: 'Funciona pra quem está começando?',
     name: 'Eduardo C.', sub: 'Cafeicultor · Cerrado Mineiro', initials: 'E', avatarBg: '#e53935',
     status: 'visto por último hoje às 21:12',
     messages: [
@@ -96,6 +99,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
+    objection: 'Vale pra qualquer tipo de produtor?',
     name: 'Roberto F.', sub: 'Produtor de grãos · Bahia', initials: 'R', avatarBg: '#1976d2',
     status: 'online',
     messages: [
@@ -104,6 +108,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
+    objection: 'Não vai ser só PowerPoint bonito?',
     name: 'Marcos A.', sub: 'Pecuarista · Mato Grosso', initials: 'M', avatarBg: '#f57c00',
     status: 'visto por último hoje às 17:02',
     messages: [
@@ -116,6 +121,7 @@ const CONVS: Conv[] = [
     ],
   },
   {
+    objection: 'Gestão não é coisa de empresa grande?',
     name: 'Antônio L.', sub: 'Produtor de soja · Maranhão', initials: 'A', avatarBg: '#00897b',
     status: 'visto por último hoje às 12:10',
     messages: [
@@ -247,6 +253,9 @@ export default function WhatsappTestimonials() {
         <div ref={trackRef} className="carousel-track">
           {CONVS.map((conv, i) => (
             <div key={i} className="carousel-card">
+              <p className="mb-3 font-sans text-sm font-semibold text-[var(--green-glow)]">
+                &ldquo;{conv.objection}&rdquo;
+              </p>
               <PhoneCard conv={conv} />
             </div>
           ))}

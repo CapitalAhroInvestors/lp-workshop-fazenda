@@ -45,6 +45,14 @@ export default function Reality() {
             estão ganhando ou perdendo dinheiro.
           </p>
         </AnimateIn>
+
+        <AnimateIn variant="fadeUp" delay={0.32} className="mt-10">
+          <p className="mx-auto max-w-[680px] text-center font-sans text-lg font-semibold leading-[1.6] text-[var(--text-primary)] md:text-xl">
+            Margem apertada não perdoa decisão por intuição. Em ano assim, quem não enxerga o
+            próprio custo não perde no mercado —{' '}
+            <em className="not-italic text-[var(--green-glow)]">perde dentro da porteira, sem nem perceber.</em>
+          </p>
+        </AnimateIn>
       </Container>
     </section>
   )

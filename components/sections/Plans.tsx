@@ -35,6 +35,22 @@ export default function Plans() {
       style={{ background: 'radial-gradient(ellipse at center, rgba(74,222,128,0.04), transparent 70%), #000' }}
     >
       <Container>
+        {/* Ancoragem de oferta */}
+        <AnimateIn variant="fadeUp" className="mb-12">
+          <div className="mx-auto max-w-[680px] rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] px-8 py-8 text-center">
+            <p className="mb-4 font-sans text-base leading-[1.7] text-[var(--text-secondary)] md:text-[17px]">
+              Uma compra de insumo errada custa milhares. Uma safra vendida sem margem-alvo, idem.
+              Um vazamento de custo não enxergado se repete safra após safra.
+            </p>
+            <p className="font-sans text-base font-semibold leading-[1.7] text-[var(--text-primary)] md:text-[17px]">
+              R$ 49,90 é menos do que o prejuízo de um único desses erros.{' '}
+              <span className="text-[var(--green-glow)]">
+                Em 90 minutos você sai com uma régua para enxergar onde sua fazenda está perdendo dinheiro — antes que vire prejuízo.
+              </span>
+            </p>
+          </div>
+        </AnimateIn>
+
         <AnimateIn variant="fadeUp" className="mb-4">
           <SectionTitle eyebrow="GARANTA SUA VAGA" align="center">
             Escolha como você vai <em>participar</em>.
@@ -86,13 +102,26 @@ export default function Plans() {
               nextLotPrice={PLANS.basic.nextLotPrice}
               features={PLANS.basic.features}
               checkoutUrl={PLANS.basic.checkoutUrl}
-              trackingId="click_checkout_47"
+              trackingId="click_checkout_49"
               upsellPrice={PLANS.basic.upsellPrice}
               upsellCheckoutUrl={PLANS.basic.upsellCheckoutUrl}
               mockupImage="/mockup-bundle2.webp"
             />
           </AnimateIn>
         </div>
+
+        {/* Garantia inline — próxima dos botões de compra */}
+        <AnimateIn variant="fadeUp" delay={0.2} className="mt-10 flex justify-center">
+          <div className="flex items-center gap-3 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-card)] px-6 py-3">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-[var(--green-glow)]" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+            <span className="font-sans text-sm text-[var(--text-secondary)]">
+              <strong className="text-[var(--text-primary)]">Garantia de 7 dias.</strong>{' '}
+              Se o workshop não te mostrar onde sua fazenda pode estar perdendo dinheiro, devolvemos 100% do valor. Sem burocracia.
+            </span>
+          </div>
+        </AnimateIn>
       </Container>
     </section>
   )

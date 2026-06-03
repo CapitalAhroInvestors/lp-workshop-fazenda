@@ -11,7 +11,7 @@ const PILLARS = [
   },
   {
     number: '02',
-    title: 'Os 5 sistemas da fazenda lucrativa',
+    title: 'Os 5 sistemas da fazenda que funciona como empresa',
     description: 'O que toda fazenda que dá lucro tem em funcionamento — e o que a sua provavelmente está negligenciando.',
   },
   {
@@ -36,7 +36,7 @@ export default function Pillars() {
     <section id="pilares" className="bg-[var(--bg-elevated)] py-24 md:py-32">
       <Container>
         <AnimateIn variant="fadeUp" className="mb-14">
-          <SectionTitle eyebrow="OS 5 PILARES DO WORKSHOP" align="center">
+          <SectionTitle eyebrow="OS 5 SISTEMAS DO WORKSHOP" align="center">
             O que você vai <em>construir</em> em 90 minutos ao vivo.
           </SectionTitle>
         </AnimateIn>
