@@ -57,33 +57,25 @@ export default function Hero() {
       <Container className="relative z-10 py-28 md:py-36">
         <div className="flex flex-col items-center text-center">
 
-          {/* Pré-título — tensão antes do H1 */}
-          <p
-            className="mb-5 max-w-[680px] font-sans text-[15px] font-medium leading-[1.6] text-white/80 md:text-[17px]"
-            style={{ animation: 'hero-fade-up 0.6s cubic-bezier(0.22,1,0.36,1) both' }}
-          >
-            Você produz, vende e movimenta dinheiro o ano inteiro — e ainda assim não sabe dizer, com número, se lucrou, se perdeu ou só girou caixa.
-          </p>
-
           {/* H1 */}
           <h1
-            className="mb-6 max-w-[760px] font-serif text-[42px] font-medium leading-[1.05] text-white md:text-[72px]"
-            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s both' }}
+            className="mb-6 max-w-[760px] font-serif text-[38px] font-medium leading-[1.1] text-white md:text-[64px]"
+            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both' }}
           >
-            A fazenda que funciona como{' '}
-            <em className="italic text-[var(--green-glow)]">empresa</em>.
+            Você produz, vende e movimenta dinheiro o ano inteiro — e ainda assim não sabe dizer, com número, se{' '}
+            <em className="italic text-[var(--green-glow)]">lucrou, se perdeu ou só girou caixa.</em>
           </h1>
 
           {/* Subtítulo */}
           <p
             className="mb-10 max-w-[580px] font-sans text-base leading-[1.65] text-white/75 md:text-[18px]"
-            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both' }}
+            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.12s both' }}
           >
             Workshop ao vivo com o Dr. Renato Rodrigues (ex-pesquisador Embrapa) sobre os 5 sistemas que separam a fazenda que constrói patrimônio da que só sobrevive à próxima safra.
           </p>
 
           {/* CTA principal */}
-          <div style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.32s both' }}>
+          <div style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.24s both' }}>
             <CtaButton href={PLANS.basic.checkoutUrl} trackingId="hero_cta_primary" size="lg">
               Quero enxergar onde minha fazenda perde dinheiro — R$ 49,90
             </CtaButton>
@@ -92,7 +84,7 @@ export default function Hero() {
           {/* Régua de credibilidade — discreta, abaixo do CTA */}
           <div
             className="mt-8 flex flex-wrap justify-center gap-3"
-            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.44s both' }}
+            style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.36s both' }}
           >
             {INFO_ITEMS.map(({ icon: Icon, label }, i) => (
               <div
