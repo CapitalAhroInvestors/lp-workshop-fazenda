@@ -38,6 +38,10 @@ export default function Plans() {
         {/* Ancoragem de oferta */}
         <AnimateIn variant="fadeUp" className="mb-12">
           <div className="mx-auto max-w-[680px] rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] px-8 py-8 text-center">
+            <p className="mb-4 font-sans text-base leading-[1.7] text-[var(--text-secondary)] md:text-[17px]">
+              Uma compra de insumo errada custa milhares. Uma safra vendida sem margem-alvo, idem.
+              Um vazamento de custo não enxergado se repete safra após safra.
+            </p>
             <p className="font-sans text-base font-semibold leading-[1.7] text-[var(--text-primary)] md:text-[17px]">
               R$ 49,90 é menos do que o prejuízo de um único desses erros.{' '}
               <span className="text-[var(--green-glow)]">
