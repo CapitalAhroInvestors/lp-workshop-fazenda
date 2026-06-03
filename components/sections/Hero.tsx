@@ -76,7 +76,7 @@ export default function Hero() {
           {/* CTA principal */}
           <div style={{ animation: 'hero-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) 0.24s both' }}>
             <CtaButton href="#planos" trackingId="hero_cta_primary" size="lg" isAnchor>
-              Quero enxergar onde minha fazenda perde dinheiro — R$ 49,90
+              Quero enxergar minha margem
             </CtaButton>
           </div>
 
