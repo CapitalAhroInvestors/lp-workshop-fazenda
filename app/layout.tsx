@@ -59,14 +59,14 @@ const jsonLd = {
     {
       '@type': 'Offer',
       name: 'Workshop',
-      price: '49.90',
+      price: '67',
       priceCurrency: 'BRL',
       availability: 'https://schema.org/InStock',
     },
     {
       '@type': 'Offer',
       name: 'Workshop + Apostila',
-      price: '67',
+      price: '97',
       priceCurrency: 'BRL',
       availability: 'https://schema.org/InStock',
     },

@@ -14,7 +14,7 @@ const FAQS = [
   },
   {
     q: 'Qual a diferença entre os 2 planos?',
-    a: 'O plano de R$ 49,90 te dá acesso ao workshop ao vivo, grupo VIP de WhatsApp, Q&A e certificado. O plano de R$ 67 inclui tudo isso mais a Apostila Mapa dos 5 Sistemas — um PDF de 40 páginas para você aplicar direto na sua fazenda.',
+    a: 'O plano de R$ 67 te dá acesso ao workshop ao vivo, grupo VIP de WhatsApp, Q&A e certificado. O plano de R$ 97 inclui tudo isso mais a Apostila Mapa dos 5 Sistemas — um PDF de 40 páginas para você aplicar direto na sua fazenda.',
   },
   {
     q: 'E se eu não conseguir assistir ao vivo?',

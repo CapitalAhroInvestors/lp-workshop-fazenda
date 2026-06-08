@@ -43,7 +43,7 @@ export default function Plans() {
               Um vazamento de custo não enxergado se repete safra após safra.
             </p>
             <p className="font-sans text-base font-semibold leading-[1.7] text-[var(--text-primary)] md:text-[17px]">
-              R$ 49,90 é menos do que o prejuízo de um único desses erros.{' '}
+              R$ 67 é menos do que o prejuízo de um único desses erros.{' '}
               <span className="text-[var(--green-glow)]">
                 Em 90 minutos você sai com uma régua para enxergar onde sua fazenda está perdendo dinheiro — antes que vire prejuízo.
               </span>
@@ -74,7 +74,7 @@ export default function Plans() {
                 Próximo lote
               </span>
               <span className="font-sans text-sm font-semibold text-[var(--text-secondary)] line-through opacity-60">
-                R$ 67 / R$ 97
+                R$ 97 / R$ 127
               </span>
             </div>
           </div>
